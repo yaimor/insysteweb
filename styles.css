@@ -175,21 +175,17 @@ em { font-style: italic; color: var(--accent); }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
   color: var(--text);
+  flex-shrink: 0;
 }
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 36px;
+.brand-logo {
+  display: block;
   height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary-700) 100%);
-  color: var(--accent-2);
+  width: auto;
+  max-width: 100%;
 }
+/* Footer (fondo oscuro) */
+.brand-light .brand-logo { height: 32px; }
 
 .nav { flex: 1; }
 .nav-list {
@@ -818,7 +814,7 @@ em { font-style: italic; color: var(--accent); }
   gap: 48px;
   margin-bottom: 48px;
 }
-.brand-light, .brand-light .brand-name { color: white; }
+.brand-light { color: white; }
 .footer-tag {
   margin-top: 14px;
   color: var(--text-on-dark-soft);
@@ -1002,15 +998,15 @@ em { font-style: italic; color: var(--accent); }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
 
-  /* Sticky header se mantiene tipográfico legible */
-  .brand-name { font-size: 1rem; }
+  /* Logo más compacto en móvil */
+  .brand-logo { height: 30px; }
 }
 
 /* --- Móvil pequeño (≤ 480px) --- */
 @media (max-width: 480px) {
   .container { padding: 0 16px; }
 
-  .brand-name { font-size: 0.95rem; }
+  .brand-logo { height: 28px; }
 
   .hero { padding: 56px 0 48px; }
   .eyebrow { font-size: 0.78rem; padding: 6px 12px; }

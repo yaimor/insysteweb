@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" role="img" aria-label="Innsyste">
+  <rect x="0" y="0" width="12" height="12" fill="#FF3D67"/>
+
+  <text x="6" y="50"
+        font-family="'Space Grotesk','Inter',system-ui,sans-serif"
+        font-weight="700"
+        font-size="56"
+        letter-spacing="-2"
+        fill="#FFFFFF">n</text>
+
+  <rect x="58" y="14" width="1.8" height="34" fill="#FFFFFF" rx="0.9"/>
+
+  <text x="70" y="46"
+        font-family="'Space Grotesk','Inter',system-ui,sans-serif"
+        font-weight="700"
+        font-size="40"
+        letter-spacing="-1.5"
+        fill="#FFFFFF">Innsyste</text>
+</svg>

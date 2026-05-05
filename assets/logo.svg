@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" role="img" aria-label="Innsyste">
+  <!-- Acento rosa/coral -->
+  <rect x="0" y="0" width="12" height="12" fill="#FF3D67"/>
+
+  <!-- "n" del isotipo -->
+  <text x="6" y="50"
+        font-family="'Space Grotesk','Inter',system-ui,sans-serif"
+        font-weight="700"
+        font-size="56"
+        letter-spacing="-2"
+        fill="#0A2540">n</text>
+
+  <!-- Separador vertical -->
+  <rect x="58" y="14" width="1.8" height="34" fill="#0A2540" rx="0.9"/>
+
+  <!-- Wordmark "Innsyste" -->
+  <text x="70" y="46"
+        font-family="'Space Grotesk','Inter',system-ui,sans-serif"
+        font-weight="700"
+        font-size="40"
+        letter-spacing="-1.5"
+        fill="#0A2540">Innsyste</text>
+</svg>
