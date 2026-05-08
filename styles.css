@@ -484,7 +484,7 @@ em { font-style: italic; color: var(--accent); }
   gap: 16px;
 }
 .valor-pillars li {
-  background: var(--bg-alt);
+  background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 24px;
@@ -500,7 +500,7 @@ em { font-style: italic; color: var(--accent); }
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: #112e50;
   color: white;
   margin-bottom: 14px;
 }
