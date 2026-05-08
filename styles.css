@@ -574,9 +574,11 @@ em { font-style: italic; color: var(--accent); }
   content: '';
   position: absolute;
   left: 0; top: 50%;
-  width: 14px; height: 2px;
-  background: var(--accent);
-  transform: translateY(-50%);
+  width: 10px; height: 6px;
+  border-left: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  background: none;
+  transform: translateY(-65%) rotate(-45deg);
 }
 
 .service-foot {
