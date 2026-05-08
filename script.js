@@ -29,6 +29,24 @@
     });
   });
 
+  // ---------- Nav dropdown (touch / click) ----------
+  document.querySelectorAll('.nav-dropdown-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const li = toggle.closest('.nav-has-dropdown');
+      const isOpen = li.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-has-dropdown')) {
+      document.querySelectorAll('.nav-has-dropdown.is-open').forEach((li) => {
+        li.classList.remove('is-open');
+        li.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   // ---------- Year in footer ----------
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();

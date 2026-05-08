@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rittal — Infraestructura TI: soluciones eficientes, seguras y escalables para centros de datos, desde Micro Data Centers hasta soluciones en contenedor." />
+  <meta name="theme-color" content="#003F8A" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <title>Rittal — Infraestructura TI | INNSYSTE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Rittal brand tokens ── */
+    :root {
+      --rit-blue:      #003F8A;
+      --rit-blue-dark: #002D63;
+      --rit-red:       #E30613;
+      --rit-gray-bg:   #F4F4F4;
+      --rit-gray-mid:  #E0E0E0;
+      --rit-text:      #1A1A1A;
+      --rit-text-soft: #555555;
+      --rit-white:     #ffffff;
+    }
+
+    /* ── Override nav for Rittal page ── */
+    .site-header { background: var(--rit-blue); }
+    .site-header.is-scrolled { background: var(--rit-blue-dark); box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+    .nav a { color: rgba(255,255,255,.85); }
+    .nav a:hover { color: #fff; }
+    .btn-primary { background: var(--rit-red); border-color: var(--rit-red); }
+    .btn-primary:hover { background: #c0050f; border-color: #c0050f; }
+
+    /* ── Hero ── */
+    .rit-hero {
+      background: linear-gradient(135deg, var(--rit-blue) 0%, var(--rit-blue-dark) 100%);
+      color: #fff;
+      padding: 96px 0 80px;
+    }
+    .rit-hero-inner { max-width: 760px; }
+    .rit-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 20px;
+    }
+    .rit-eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--rit-red);
+      flex-shrink: 0;
+    }
+    .rit-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .rit-hero h1 span { color: var(--rit-red); }
+    .rit-hero-lead {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 36px;
+      max-width: 600px;
+    }
+    .rit-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-rit-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--rit-red); color: #fff;
+      font-weight: 700; font-size: .9rem;
+      padding: 14px 28px; border-radius: 6px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-rit-primary:hover { background: #c0050f; }
+    .btn-rit-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: #fff;
+      font-weight: 600; font-size: .9rem;
+      padding: 14px 28px; border-radius: 6px;
+      border: 2px solid rgba(255,255,255,.35);
+      text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-rit-ghost:hover { border-color: #fff; background: rgba(255,255,255,.07); }
+
+    /* ── Intro strip ── */
+    .rit-intro {
+      background: var(--rit-white);
+      padding: 64px 0;
+      border-bottom: 1px solid var(--rit-gray-mid);
+    }
+    .rit-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+    }
+    .rit-stat { text-align: center; }
+    .rit-stat-num {
+      font-size: 2.4rem; font-weight: 900;
+      color: var(--rit-blue); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .rit-stat-num span { color: var(--rit-red); }
+    .rit-stat-label { font-size: .9rem; color: var(--rit-text-soft); }
+
+    /* ── Section commons ── */
+    .rit-section { padding: 80px 0; }
+    .rit-section-alt { background: var(--rit-gray-bg); }
+    .rit-section-head { text-align: center; margin-bottom: 52px; }
+    .rit-kicker {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--rit-red);
+      margin-bottom: 12px;
+    }
+    .rit-section-head h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--rit-blue);
+      margin-bottom: 14px;
+    }
+    .rit-section-head p {
+      font-size: 1rem; color: var(--rit-text-soft);
+      max-width: 580px; margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ── Products grid ── */
+    .rit-products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .rit-card {
+      background: var(--rit-white);
+      border: 1px solid var(--rit-gray-mid);
+      border-radius: 10px;
+      padding: 28px 24px;
+      transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .rit-card:hover {
+      box-shadow: 0 8px 32px rgba(0,63,138,.12);
+      border-color: var(--rit-blue);
+      transform: translateY(-3px);
+    }
+    .rit-card-icon {
+      width: 52px; height: 52px;
+      background: var(--rit-blue);
+      border-radius: 10px;
+      display: grid; place-items: center;
+      margin-bottom: 18px;
+      color: #fff;
+    }
+    .rit-card h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--rit-blue);
+      margin-bottom: 10px;
+    }
+    .rit-card p {
+      font-size: .9rem; color: var(--rit-text-soft);
+      line-height: 1.65; margin: 0;
+    }
+    .rit-card-tag {
+      display: inline-block;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--rit-red);
+      margin-bottom: 8px;
+    }
+
+    /* ── Why Rittal ── */
+    .rit-why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .rit-why-text h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800; color: var(--rit-blue);
+      margin-bottom: 16px;
+    }
+    .rit-why-text p { color: var(--rit-text-soft); line-height: 1.7; margin-bottom: 14px; }
+    .rit-why-list { list-style: none; padding: 0; margin: 24px 0; }
+    .rit-why-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: .95rem; color: var(--rit-text);
+      margin-bottom: 14px;
+    }
+    .rit-why-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 10px; height: 6px;
+      border-left: 2.5px solid var(--rit-red);
+      border-bottom: 2.5px solid var(--rit-red);
+      transform: rotate(-45deg) translateY(4px);
+    }
+    .rit-why-visual {
+      background: linear-gradient(135deg, var(--rit-blue) 0%, var(--rit-blue-dark) 100%);
+      border-radius: 16px;
+      padding: 40px;
+      color: #fff;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .rit-metric { text-align: center; padding: 20px; background: rgba(255,255,255,.1); border-radius: 10px; }
+    .rit-metric-num { font-size: 2rem; font-weight: 900; color: var(--rit-red); }
+    .rit-metric-label { font-size: .8rem; color: rgba(255,255,255,.75); margin-top: 4px; }
+
+    /* ── CTA banner ── */
+    .rit-cta-banner {
+      background: var(--rit-blue);
+      color: #fff;
+      padding: 72px 0;
+      text-align: center;
+    }
+    .rit-cta-banner h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800; margin-bottom: 12px;
+    }
+    .rit-cta-banner p {
+      font-size: 1rem; color: rgba(255,255,255,.75);
+      margin-bottom: 32px;
+    }
+    .rit-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── Footer override ── */
+    .rit-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .85rem; font-weight: 600;
+      color: var(--rit-blue);
+      text-decoration: none;
+      padding: 10px 0;
+    }
+    .rit-back:hover { color: var(--rit-red); }
+    .rit-back svg { transition: transform .2s; }
+    .rit-back:hover svg { transform: translateX(-3px); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .rit-intro-grid { grid-template-columns: 1fr; gap: 20px; }
+      .rit-why-grid { grid-template-columns: 1fr; }
+      .rit-why-visual { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Saltar al contenido</a>
+
+  <!-- HEADER (shared) -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand" aria-label="Innsyste — Inicio">
+        <img src="assets/logo-light.svg" alt="Innsyste" class="brand-logo" width="160" height="40" />
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <ul class="nav-list" id="navList">
+          <li><a href="index.html#retos">Retos</a></li>
+          <li><a href="index.html#valor">Valor</a></li>
+          <li><a href="index.html#servicios">Servicios</a></li>
+          <li><a href="index.html#estandares">Estándares</a></li>
+          <li class="nav-item-active"><a href="rittal.html">Rittal</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <a href="https://outlook.office.com/book/ComercialINNSYSTE@innsyste.com/s/Wo3P_wGOIUyr8xiB90dKmg2?ismsaljsauthenabled" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm nav-cta">Agendar reunión</a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="rit-hero">
+      <div class="container">
+        <div class="rit-hero-inner">
+          <p class="rit-eyebrow"><span class="rit-eyebrow-dot"></span>Socio estratégico · Rittal</p>
+          <h1>Infraestructura TI <span>eficiente,<br/>segura y escalable</span></h1>
+          <p class="rit-hero-lead">
+            Rittal ofrece soluciones completas a medida para su infraestructura de datos: desde
+            Micro Data Centers hasta centros de datos en contenedores, integrando energía,
+            refrigeración y monitorización en un ecosistema unificado.
+          </p>
+          <div class="rit-hero-actions">
+            <a href="index.html#contacto" class="btn-rit-primary">Solicitar cotización</a>
+            <a href="https://wa.me/573007191116" target="_blank" rel="noopener noreferrer" class="btn-rit-ghost">Hablar con un experto →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="rit-intro">
+      <div class="container">
+        <div class="rit-intro-grid">
+          <div class="rit-stat">
+            <div class="rit-stat-num">70<span>+</span></div>
+            <div class="rit-stat-label">Años de experiencia global en infraestructura TI</div>
+          </div>
+          <div class="rit-stat">
+            <div class="rit-stat-num">90<span>+</span></div>
+            <div class="rit-stat-label">Países con presencia y soporte Rittal</div>
+          </div>
+          <div class="rit-stat">
+            <div class="rit-stat-num">1M<span>+</span></div>
+            <div class="rit-stat-label">Armarios TI instalados en todo el mundo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTOS -->
+    <section class="rit-section" id="productos">
+      <div class="container">
+        <div class="rit-section-head">
+          <p class="rit-kicker">Portafolio de productos</p>
+          <h2>Soluciones completas para su infraestructura TI</h2>
+          <p>Cubrimos cada capa del data center: desde el rack hasta la alimentación, refrigeración y supervisión remota.</p>
+        </div>
+
+        <div class="rit-products">
+
+          <!-- Data Center Solutions -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <span class="rit-card-tag">Data Center</span>
+            <h3>Data Center Solutions</h3>
+            <p>Centros de datos modulares en container, escalables y listos para PyMEs, aplicaciones cloud y Edge Computing.</p>
+          </div>
+
+          <!-- Sistemas de Armarios TI -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            </div>
+            <span class="rit-card-tag">Racks & Armarios</span>
+            <h3>Sistemas de Armarios TI</h3>
+            <p>Soluciones de sistema flexibles para racks de servidores y redes. Diseño modular que se adapta a cualquier entorno.</p>
+          </div>
+
+          <!-- Cajas TI -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <span class="rit-card-tag">Compacto</span>
+            <h3>Cajas TI</h3>
+            <p>Caja compacta de 19" para pequeñas aplicaciones de red. Instalación mural o de pie, ideal para oficinas y sucursales.</p>
+          </div>
+
+          <!-- Energía TI -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <span class="rit-card-tag">Energía</span>
+            <h3>Energía TI</h3>
+            <p>Sistemas de distribución y protección de energía que garantizan alta disponibilidad y reducen costos operativos.</p>
+          </div>
+
+          <!-- Monitorización TI -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+            </div>
+            <span class="rit-card-tag">Monitorización</span>
+            <h3>Monitorización TI</h3>
+            <p>Control y supervisión remota de parámetros físicos del entorno TI: temperatura, humedad, acceso y más.</p>
+          </div>
+
+          <!-- Refrigeración TI -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.93 4.93l14.14 14.14M2 12h20M4.93 19.07 19.07 4.93"/></svg>
+            </div>
+            <span class="rit-card-tag">Refrigeración</span>
+            <h3>Refrigeración TI</h3>
+            <p>Conceptos de climatización desde un rack individual hasta data centers completos, optimizados para PUE eficiente.</p>
+          </div>
+
+          <!-- Detección de Incendios -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+            </div>
+            <span class="rit-card-tag">Seguridad</span>
+            <h3>Detección y Extinción de Incendios</h3>
+            <p>Sistema certificado VdS para racks de redes y servidores. Protección temprana ante incendios dentro del armario.</p>
+          </div>
+
+          <!-- Micro Data Center -->
+          <div class="rit-card">
+            <div class="rit-card-icon">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg>
+            </div>
+            <span class="rit-card-tag">Edge Computing</span>
+            <h3>Micro Data Centers</h3>
+            <p>Soluciones preconfiguradas todo-en-uno para Edge Computing: refrigeración, energía y monitorización integradas en un armario.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY RITTAL -->
+    <section class="rit-section rit-section-alt">
+      <div class="container">
+        <div class="rit-why-grid">
+          <div class="rit-why-text">
+            <p class="rit-kicker">¿Por qué Rittal?</p>
+            <h2>El estándar global en infraestructura TI</h2>
+            <p>Rittal es el fabricante número uno mundial de armarios de distribución eléctrica e infraestructura TI. Sus soluciones están diseñadas para reducir el tiempo de implementación y el costo total de propiedad.</p>
+            <ul class="rit-why-list">
+              <li>Soluciones 100% modulares y escalables</li>
+              <li>Integración nativa de energía, refrigeración y gestión</li>
+              <li>Certificaciones internacionales (VdS, IEC, EN)</li>
+              <li>Soporte técnico local con respaldo global</li>
+              <li>Reducción del PUE y costos de operación</li>
+              <li>Implementación rápida con soluciones preconfiguradas</li>
+            </ul>
+            <a href="index.html#contacto" class="btn-rit-primary" style="margin-top:8px">Solicitar información</a>
+          </div>
+
+          <div class="rit-why-visual">
+            <div class="rit-metric">
+              <div class="rit-metric-num">70+</div>
+              <div class="rit-metric-label">Años de experiencia</div>
+            </div>
+            <div class="rit-metric">
+              <div class="rit-metric-num">#1</div>
+              <div class="rit-metric-label">Fabricante mundial</div>
+            </div>
+            <div class="rit-metric">
+              <div class="rit-metric-num">90+</div>
+              <div class="rit-metric-label">Países con presencia</div>
+            </div>
+            <div class="rit-metric">
+              <div class="rit-metric-num">1M+</div>
+              <div class="rit-metric-label">Armarios instalados</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="rit-cta-banner">
+      <div class="container">
+        <h2>¿Listo para optimizar su infraestructura TI?</h2>
+        <p>Hable con nuestro equipo. Le asesoramos en la selección e implementación de la solución Rittal ideal para su organización.</p>
+        <div class="rit-cta-actions">
+          <a href="index.html#contacto" class="btn-rit-primary">Solicitar cotización</a>
+          <a href="https://wa.me/573007191116" target="_blank" rel="noopener noreferrer" class="btn-rit-ghost">WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="brand brand-light" aria-label="Innsyste — Inicio">
+          <img src="assets/logo-light.svg" alt="Innsyste" class="brand-logo" width="150" height="38" />
+        </a>
+        <p style="color:rgba(255,255,255,.55);font-size:.85rem;margin-top:12px;line-height:1.6;">
+          Distribuidores autorizados de Rittal en Colombia.
+        </p>
+      </div>
+      <div>
+        <h4 class="footer-heading">Productos Rittal</h4>
+        <ul class="footer-links">
+          <li><a href="#productos">Data Center Solutions</a></li>
+          <li><a href="#productos">Armarios TI</a></li>
+          <li><a href="#productos">Energía TI</a></li>
+          <li><a href="#productos">Refrigeración TI</a></li>
+          <li><a href="#productos">Monitorización TI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contacto</h4>
+        <ul class="footer-contact">
+          <li><a href="mailto:mario@innsyste.com">mario@innsyste.com</a></li>
+          <li><a href="https://wa.me/573007191116" target="_blank" rel="noopener noreferrer">+57 300 719 1116</a></li>
+          <li><a href="https://www.innsyste.com" target="_blank" rel="noopener">www.innsyste.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> INNSYSTE. Todos los derechos reservados. · Distribuidores Rittal Colombia.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+      const header = document.getElementById('siteHeader');
+      const onScroll = () => {
+        if (window.scrollY > 8) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      const navToggle = document.getElementById('navToggle');
+      const nav = document.querySelector('.nav');
+      navToggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      });
+      nav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          if (nav.classList.contains('is-open')) {
+            nav.classList.remove('is-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+</body>
+</html>
