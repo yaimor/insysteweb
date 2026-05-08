@@ -192,6 +192,7 @@ em { font-style: italic; color: var(--accent); }
   display: flex;
   gap: 28px;
   justify-content: center;
+  align-items: center;
 }
 .nav-list a {
   font-size: 0.92rem;
