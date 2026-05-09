@@ -763,25 +763,25 @@ em { font-style: italic; color: var(--accent); }
 .contacto-text p { color: var(--text-soft); font-size: 1rem; }
 
 .contact-card {
-  margin-top: 32px;
+  margin-top: 20px;
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: 18px 20px;
 }
 .contact-name {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text);
-  margin: 0 0 4px;
+  margin: 0 0 2px;
 }
 .contact-role {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--text-mute);
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
-.contact-list { display: grid; gap: 12px; }
+.contact-list { display: grid; gap: 7px; }
 .contact-list li {
   display: flex;
   align-items: center;
