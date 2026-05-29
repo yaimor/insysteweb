@@ -29,6 +29,24 @@
     });
   });
 
+  // ---------- Nav dropdown (touch / click) ----------
+  document.querySelectorAll('.nav-dropdown-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      const li = toggle.closest('.nav-has-dropdown');
+      const isOpen = li.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-has-dropdown')) {
+      document.querySelectorAll('.nav-has-dropdown.is-open').forEach((li) => {
+        li.classList.remove('is-open');
+        li.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   // ---------- Year in footer ----------
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -56,31 +74,4 @@
     revealTargets.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // ---------- Contact form (UI feedback only) ----------
-  const form = document.getElementById('contactForm');
-  const hint = document.getElementById('formHint');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    hint.classList.remove('success', 'error');
-
-    const data = new FormData(form);
-    const name = (data.get('name') || '').toString().trim();
-    const email = (data.get('email') || '').toString().trim();
-
-    if (!name || !email) {
-      hint.textContent = 'Por favor completa el nombre y el correo.';
-      hint.classList.add('error');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      hint.textContent = 'Verifica el formato del correo.';
-      hint.classList.add('error');
-      return;
-    }
-
-    hint.textContent = 'Gracias. Hemos recibido tu mensaje, te contactaremos pronto.';
-    hint.classList.add('success');
-    form.reset();
-  });
 })();
