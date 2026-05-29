@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="INNSYSTE SDM — Service Delivery Management. El mejor servicio TIC para tu organización: soporte estructurado, métricas reales y experiencia de usuario garantizada. Alineado con ITIL 4 y COBIT." />
+  <meta name="theme-color" content="#112e50" />
+  <title>INNSYSTE SDM — Service Delivery Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:#ffffff; --bg-alt:rgba(17,46,80,.04); --bg-dark:#112e50; --surface:#ffffff;
+      --border:rgba(17,46,80,.12); --text:#112e50; --text-soft:rgba(17,46,80,.65);
+      --text-mute:rgba(17,46,80,.45); --text-on-dark:rgba(255,255,255,.90);
+      --text-on-dark-soft:rgba(255,255,255,.60); --primary:#112e50; --accent:#ff4575;
+      --font:'Montserrat',system-ui,-apple-system,sans-serif; --container:1200px;
+      --radius:14px; --radius-lg:22px;
+      --shadow-sm:0 1px 2px rgba(17,46,80,.06),0 1px 3px rgba(17,46,80,.04);
+      --shadow:0 10px 30px -10px rgba(17,46,80,.15),0 4px 12px -4px rgba(17,46,80,.08);
+      --shadow-lg:0 25px 50px -12px rgba(17,46,80,.25);
+      --ease:200ms cubic-bezier(.4,0,.2,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+    img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+    .container{width:100%;max-width:var(--container);margin:0 auto;padding:0 24px}
+    .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:rgba(255,69,117,.08);border-radius:100px;padding:5px 14px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font);font-size:14px;font-weight:600;padding:13px 26px;border-radius:var(--radius);cursor:pointer;transition:var(--ease);border:none;outline:none}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:#e03060;transform:translateY(-1px);box-shadow:0 8px 20px rgba(255,69,117,.35)}
+    .btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--border)}
+    .btn-outline:hover{border-color:var(--primary);background:var(--bg-alt)}
+    .btn-ghost-dark{background:rgba(255,255,255,.10);color:var(--text-on-dark);border:1.5px solid rgba(255,255,255,.18)}
+    .btn-ghost-dark:hover{background:rgba(255,255,255,.18)}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;gap:32px}
+    .nav-logo img{height:32px}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{font-size:13.5px;font-weight:500;color:var(--text-soft);transition:var(--ease)}
+    .nav-links a:hover{color:var(--primary)}
+    .nav-cta{display:flex;gap:10px}
+    @media(max-width:768px){.nav-links,.nav-cta-desktop{display:none}}
+
+    /* HERO */
+    .hero{background:var(--bg-dark);padding:100px 0 90px;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 80% -10%,rgba(255,69,117,.12) 0%,transparent 60%),radial-gradient(ellipse 500px 400px at -10% 100%,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative}
+    .hero-tag{margin-bottom:20px}
+    .hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1.12;color:var(--text-on-dark);letter-spacing:-.02em;margin-bottom:22px}
+    .hero h1 em{font-style:normal;color:var(--accent)}
+    .hero-desc{font-size:17px;color:var(--text-on-dark-soft);max-width:520px;line-height:1.7;margin-bottom:36px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+    .hero-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);padding:18px 20px}
+    .hero-stat-num{font-size:26px;font-weight:800;color:#fff}
+    .hero-stat-label{font-size:11.5px;font-weight:500;color:var(--text-on-dark-soft);margin-top:4px}
+    .hero-visual{display:flex;flex-direction:column;gap:12px}
+    .hero-level{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius);padding:16px 20px;display:flex;align-items:center;gap:16px;transition:var(--ease)}
+    .hero-level:hover{background:rgba(255,255,255,.12);transform:translateX(4px)}
+    .hero-level-badge{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+    .l1{background:rgba(255,69,117,.20);color:#ff8aaa}
+    .l2{background:rgba(99,179,237,.20);color:#90cdf4}
+    .l4{background:rgba(246,173,85,.20);color:#fbd38d}
+    .hero-level-info .title{font-size:13px;font-weight:700;color:var(--text-on-dark)}
+    .hero-level-info .sub{font-size:11.5px;color:var(--text-on-dark-soft);margin-top:2px}
+    .hero-level-avail{margin-left:auto;font-size:10.5px;font-weight:600;color:var(--text-on-dark-soft);white-space:nowrap}
+    @media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}}
+
+    /* SECTIONS */
+    section{padding:88px 0}
+    .section-header{text-align:center;max-width:640px;margin:0 auto 56px}
+    .section-header .tag{margin-bottom:16px}
+    .section-header h2{font-size:clamp(1.75rem,3vw,2.6rem);font-weight:800;letter-spacing:-.02em;line-height:1.18;margin-bottom:16px}
+    .section-header p{font-size:16px;color:var(--text-soft);line-height:1.7}
+
+    /* PAIN */
+    .pain{background:var(--bg)}
+    .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .pain-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px}
+    .pain-icon{font-size:26px;margin-bottom:14px}
+    .pain-card h3{font-size:15px;font-weight:700;margin-bottom:8px}
+    .pain-card p{font-size:13.5px;color:var(--text-soft);line-height:1.65}
+    @media(max-width:768px){.pain-grid{grid-template-columns:1fr}}
+
+    /* WHAT */
+    .what{background:var(--bg-dark);color:var(--text-on-dark)}
+    .what .section-header h2{color:var(--text-on-dark)}
+    .what .section-header p{color:var(--text-on-dark-soft)}
+    .what-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .what-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);border-radius:var(--radius-lg);padding:32px;transition:var(--ease)}
+    .what-card:hover{background:rgba(255,255,255,.10)}
+    .what-card-icon{width:48px;height:48px;border-radius:12px;background:rgba(255,69,117,.18);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px}
+    .what-card h3{font-size:17px;font-weight:700;color:var(--text-on-dark);margin-bottom:10px}
+    .what-card p{font-size:14px;color:var(--text-on-dark-soft);line-height:1.7}
+    @media(max-width:768px){.what-grid{grid-template-columns:1fr}}
+
+    /* LEVELS */
+    .levels{background:var(--bg)}
+    .levels-stack{display:flex;flex-direction:column;gap:16px}
+    .level-row{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 32px;display:grid;grid-template-columns:200px 1fr auto;gap:32px;align-items:start;transition:var(--ease)}
+    .level-row:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+    .level-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;margin-bottom:10px}
+    .badge-l1{background:rgba(255,69,117,.10);color:#e0195a}
+    .badge-l1m{background:rgba(99,179,237,.12);color:#2b6cb0}
+    .badge-l23{background:rgba(104,211,145,.12);color:#276749}
+    .badge-l4{background:rgba(246,173,85,.14);color:#b7791f}
+    .level-name{font-size:18px;font-weight:800;margin-bottom:4px}
+    .level-avail{font-size:11.5px;font-weight:600;color:var(--text-mute)}
+    .level-services{display:flex;flex-wrap:wrap;gap:8px}
+    .service-chip{background:var(--bg-alt);border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:500;padding:5px 14px;color:var(--text-soft)}
+    .level-demand{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;font-size:12px;color:var(--text-soft);min-width:180px;white-space:nowrap}
+    .level-demand strong{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-mute);margin-bottom:6px}
+    @media(max-width:900px){.level-row{grid-template-columns:1fr}.level-demand{display:none}}
+
+    /* DIFF */
+    .diff{background:var(--bg-alt)}
+    .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .diff-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;transition:var(--ease)}
+    .diff-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+    .diff-num{font-size:11px;font-weight:800;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+    .diff-card h3{font-size:16px;font-weight:700;margin-bottom:10px}
+    .diff-card p{font-size:13.5px;color:var(--text-soft);line-height:1.7}
+    @media(max-width:768px){.diff-grid{grid-template-columns:1fr}}
+
+    /* HOW */
+    .how{background:var(--bg)}
+    .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+    .how-steps::before{content:'';position:absolute;top:28px;left:12%;right:12%;height:2px;background:var(--border);z-index:0}
+    .how-step{text-align:center;padding:0 16px;position:relative;z-index:1}
+    .how-step-num{width:56px;height:56px;border-radius:50%;background:var(--bg-dark);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;margin:0 auto 18px;box-shadow:var(--shadow)}
+    .how-step h3{font-size:14px;font-weight:700;margin-bottom:8px}
+    .how-step p{font-size:13px;color:var(--text-soft);line-height:1.6}
+    @media(max-width:768px){.how-steps{grid-template-columns:1fr 1fr}.how-steps::before{display:none}}
+    @media(max-width:480px){.how-steps{grid-template-columns:1fr}}
+
+    /* METRICS */
+    .metrics{background:var(--bg-dark);padding:72px 0}
+    .metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .metric-card{text-align:center;border:1px solid rgba(255,255,255,.10);border-radius:var(--radius-lg);padding:32px 20px;background:rgba(255,255,255,.05)}
+    .metric-num{font-size:3rem;font-weight:800;color:#fff;line-height:1}
+    .metric-unit{font-size:1.5rem;color:var(--accent)}
+    .metric-label{font-size:13px;color:var(--text-on-dark-soft);margin-top:10px;line-height:1.5}
+    @media(max-width:768px){.metrics-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* STANDARDS */
+    .standards{background:var(--bg)}
+    .standards-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .std-pill{background:var(--bg-alt);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:600;padding:8px 20px;color:var(--text-soft);transition:var(--ease)}
+    .std-pill:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+    /* MODELS */
+    .models{background:var(--bg-alt)}
+    .models-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .model-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;display:flex;flex-direction:column;transition:var(--ease)}
+    .model-card.featured{background:var(--primary);border-color:var(--primary);color:var(--text-on-dark)}
+    .model-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+    .model-card h3{font-size:18px;font-weight:800;margin-bottom:8px}
+    .model-card .desc{font-size:14px;color:var(--text-soft);line-height:1.65;margin-bottom:20px;flex-grow:1}
+    .model-card.featured .desc{color:var(--text-on-dark-soft)}
+    .model-features{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:24px}
+    .model-features li{font-size:13.5px;display:flex;align-items:flex-start;gap:10px}
+    .model-features li::before{content:'✓';color:var(--accent);font-weight:800;flex-shrink:0;margin-top:1px}
+    .model-card.featured .model-features li::before{color:#ff8aaa}
+    .model-card.featured .model-features li{color:var(--text-on-dark-soft)}
+    @media(max-width:768px){.models-grid{grid-template-columns:1fr}}
+
+    /* CTA */
+    .cta{background:var(--bg-dark);padding:96px 0;text-align:center;position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 500px at 50% 50%,rgba(255,69,117,.12) 0%,transparent 65%);pointer-events:none}
+    .cta-inner{position:relative}
+    .cta h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;color:var(--text-on-dark);letter-spacing:-.02em;max-width:700px;margin:0 auto 20px;line-height:1.15}
+    .cta h2 em{font-style:normal;color:var(--accent)}
+    .cta p{font-size:17px;color:var(--text-on-dark-soft);max-width:520px;margin:0 auto 40px}
+    .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .cta-contact{margin-top:56px;padding-top:40px;border-top:1px solid rgba(255,255,255,.10);display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+    .cta-contact-item{display:flex;align-items:center;gap:10px}
+    .cta-contact-item span{font-size:14px;color:var(--text-on-dark-soft)}
+    .cta-contact-item a{font-size:14px;font-weight:600;color:var(--text-on-dark);transition:var(--ease)}
+    .cta-contact-item a:hover{color:var(--accent)}
+
+    /* FOOTER */
+    footer{background:#0a1e35;border-top:1px solid rgba(255,255,255,.06);padding:40px 0}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .footer-inner img{height:28px}
+    .footer-links{display:flex;gap:24px;list-style:none}
+    .footer-links a{font-size:13px;color:var(--text-on-dark-soft);transition:var(--ease)}
+    .footer-links a:hover{color:#fff}
+    .footer-copy{font-size:12px;color:var(--text-on-dark-soft)}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .reveal{opacity:0;animation:fadeUp .55s ease forwards}
+    .reveal.d1{animation-delay:.1s}.reveal.d2{animation-delay:.2s}
+    .reveal.d3{animation-delay:.3s}.reveal.d4{animation-delay:.4s}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="https://www.innsyste.com" class="nav-logo"><img src="/assets/logo.svg" alt="INNSYSTE" /></a>
+    <ul class="nav-links">
+      <li><a href="#que-es">¿Qué es SDM?</a></li>
+      <li><a href="#niveles">Niveles</a></li>
+      <li><a href="#diferenciadores">Diferenciadores</a></li>
+      <li><a href="#modalidades">Modalidades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-cta nav-cta-desktop">
+      <a href="https://wa.me/573007191116?text=Hola%2C%20quiero%20conocer%20el%20servicio%20INNSYSTE%20SDM" class="btn btn-outline" target="_blank">WhatsApp</a>
+      <a href="https://outlook.office.com/book/ComercialINNSYSTE@innsyste.com/s/Wo3P_wGOIUyr8xiB90dKmg2?ismsaljsauthenabled" class="btn btn-primary" target="_blank">Agendar reunión →</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag"><span class="tag">Service Delivery Management</span></div>
+      <h1>El soporte TIC que tu<br />empresa merece,<br /><em>con métricas reales</em></h1>
+      <p class="hero-desc">INNSYSTE SDM es nuestro modelo de gestión de servicios TIC diseñado para garantizar la mejor experiencia de usuario, tiempos de respuesta predecibles y resultados medibles — alineado con <strong style="color:rgba(255,255,255,.9)">ITIL 4</strong> y <strong style="color:rgba(255,255,255,.9)">COBIT</strong>.</p>
+      <div class="hero-actions">
+        <a href="https://outlook.office.com/book/ComercialINNSYSTE@innsyste.com/s/Wo3P_wGOIUyr8xiB90dKmg2?ismsaljsauthenabled" class="btn btn-primary" target="_blank">Conoce el servicio →</a>
+        <a href="https://wa.me/573007191116?text=Hola%2C%20quiero%20conocer%20el%20servicio%20INNSYSTE%20SDM" class="btn btn-ghost-dark" target="_blank">Hablar ahora</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Niveles de servicio</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">7×24</div><div class="hero-stat-label">Disponibilidad máxima</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">11+</div><div class="hero-stat-label">Años de experiencia</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-level"><div class="hero-level-badge l1">L1</div><div class="hero-level-info"><div class="title">Help Desk · PUC</div><div class="sub">Primer contacto, solicitudes y gestión de incidentes</div></div><div class="hero-level-avail">L-V 8×5</div></div>
+      <div class="hero-level"><div class="hero-level-badge l1" style="background:rgba(99,179,237,.2);color:#90cdf4">L1M</div><div class="hero-level-info"><div class="title">SDM Móvil · Respuesta Inmediata</div><div class="sub">Soporte en sitio, manos remotas, despacho urgente</div></div><div class="hero-level-avail">7×24</div></div>
+      <div class="hero-level"><div class="hero-level-badge l2">L2-3</div><div class="hero-level-info"><div class="title">ITOps · SecOps · AIOps</div><div class="sub">Observabilidad, automatización y análisis de causa raíz</div></div><div class="hero-level-avail">L-V 8×5 | 7×24</div></div>
+      <div class="hero-level"><div class="hero-level-badge l4">L4+</div><div class="hero-level-info"><div class="title">Consulting · Misión Crítica</div><div class="sub">Legal, normativa, transformación digital, proyectos</div></div><div class="hero-level-avail">Por acuerdo</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pain" id="que-es">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">El problema</span>
+      <h2>¿Por qué el soporte TIC falla en la mayoría de organizaciones?</h2>
+      <p>La tecnología avanza, pero el modelo de soporte no. El resultado es un equipo de IT atrapado apagando incendios sin tiempo para generar valor estratégico.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal d1"><div class="pain-icon">📋</div><h3>Sin SLAs ni métricas claras</h3><p>No hay compromiso medible. Cada incidente es una promesa informal que depende de quién atiende ese día.</p></div>
+      <div class="pain-card reveal d2"><div class="pain-icon">🔁</div><h3>Problemas recurrentes sin solución</h3><p>Los mismos incidentes vuelven semana tras semana porque nadie investiga la causa raíz ni documenta el conocimiento.</p></div>
+      <div class="pain-card reveal d3"><div class="pain-icon">🙈</div><h3>Operación reactiva y sin visibilidad</h3><p>Los problemas se detectan cuando el usuario reporta. No existe monitoreo proactivo que anticipe la falla antes de que impacte.</p></div>
+      <div class="pain-card reveal d1"><div class="pain-icon">🔒</div><h3>Dependencia de personas clave</h3><p>El conocimiento vive en las cabezas de 2 o 3 personas. Si salen, la operación colapsa.</p></div>
+      <div class="pain-card reveal d2"><div class="pain-icon">📉</div><h3>Sin evidencia del valor entregado</h3><p>No hay reportes de gestión que demuestren al negocio el impacto real del servicio de IT.</p></div>
+      <div class="pain-card reveal d3"><div class="pain-icon">😤</div><h3>Usuario frustrado, siempre</h3><p>El usuario no sabe qué pasó con su ticket, cuándo lo resolverán, ni a quién escalar. La experiencia es impredecible.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="what">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag" style="background:rgba(255,69,117,.15);color:#ff8aaa">La solución</span>
+      <h2>INNSYSTE SDM: un sistema operativo para tu servicio TIC</h2>
+      <p style="color:var(--text-on-dark-soft)">No es solo soporte. Es un modelo completo de entrega de servicios con estructura, métricas, responsables y mejora continua.</p>
+    </div>
+    <div class="what-grid">
+      <div class="what-card reveal d1"><div class="what-card-icon">📊</div><h3>Métricas desde el día 1</h3><p>SLAs definidos por prioridad, KPIs de satisfacción (CSAT), tasa de resolución en primer contacto (FCR) y tiempo medio de resolución (MTTR) — todo medido, reportado y gestionado.</p></div>
+      <div class="what-card reveal d2"><div class="what-card-icon">🎯</div><h3>Experiencia de usuario como centro</h3><p>Diseñamos el servicio desde el journey del usuario, no desde la tecnología. Cada interacción tiene un responsable, un tiempo de respuesta y un canal de seguimiento.</p></div>
+      <div class="what-card reveal d3"><div class="what-card-icon">⚙️</div><h3>Automatización inteligente (AIOps)</h3><p>Monitoreo proactivo, correlación de alertas y auto-healing para resolver problemas antes de que el usuario los sienta. Reducción de incidentes repetitivos en más del 30%.</p></div>
+      <div class="what-card reveal d4"><div class="what-card-icon">🔄</div><h3>Mejora continua estructurada</h3><p>Ciclo CSI mensual: revisamos KPIs, identificamos causas de incumplimiento, ejecutamos mejoras y presentamos resultados al cliente en QBRs trimestrales.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="levels" id="niveles">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Estructura del servicio</span>
+      <h2>Cuatro niveles, un solo proveedor</h2>
+      <p>Desde el primer contacto hasta la consultoría estratégica, INNSYSTE SDM cubre todo el ciclo de vida del servicio TIC de tu organización.</p>
+    </div>
+    <div class="levels-stack">
+      <div class="level-row reveal d1">
+        <div class="level-head"><div class="level-badge badge-l1">● L1 — Help Desk</div><div class="level-name">PUC · Help Desk</div><div class="level-avail">L-V 8×5</div></div>
+        <div class="level-services"><span class="service-chip">Punto Único de Contacto</span><span class="service-chip">Gestión Telefónica</span><span class="service-chip">Gestión de Solicitudes</span><span class="service-chip">Gestión de Incidentes</span><span class="service-chip">Triaje y escalamiento</span><span class="service-chip">Gestión de Activos TI</span><span class="service-chip">Base de Conocimiento</span></div>
+        <div class="level-demand"><strong>Genera demanda de</strong>Consumibles · Periféricos<br />Garantías · Equipos</div>
+      </div>
+      <div class="level-row reveal d2">
+        <div class="level-head"><div class="level-badge badge-l1m">● L1M — SDM Móvil</div><div class="level-name">Respuesta Inmediata</div><div class="level-avail">L-V 8×5 | 7×24</div></div>
+        <div class="level-services"><span class="service-chip">Soporte en Sitio</span><span class="service-chip">Manos Remotas</span><span class="service-chip">Diagnóstico de Madurez TIC</span><span class="service-chip">Capacitación Funcional</span><span class="service-chip">Respuesta urgente presencial</span></div>
+        <div class="level-demand"><strong>Genera demanda de</strong>Equipos · Servicios<br />Licenciamiento · Proyectos</div>
+      </div>
+      <div class="level-row reveal d3">
+        <div class="level-head"><div class="level-badge badge-l23">● L2–3 · ITOps / SecOps</div><div class="level-name">ITOps · SecOps · AIOps</div><div class="level-avail">L-V 8×5 | 7×24</div></div>
+        <div class="level-services"><span class="service-chip">Observabilidad y Monitoreo Proactivo</span><span class="service-chip">Automatización</span><span class="service-chip">Análisis de Causa Raíz</span><span class="service-chip">SOM Transversal IT</span><span class="service-chip">SOM Ciberseguridad</span><span class="service-chip">SOM Microsoft 365</span><span class="service-chip">Backup as a Service</span><span class="service-chip">CloudOps</span><span class="service-chip">OnCall 7×24</span></div>
+        <div class="level-demand"><strong>Genera demanda de</strong>Servicios gestionados<br />Licenciamiento · Cloud</div>
+      </div>
+      <div class="level-row reveal d4">
+        <div class="level-head"><div class="level-badge badge-l4">● L4+ · Consulting</div><div class="level-name">Consulting · Misión Crítica</div><div class="level-avail">Por acuerdo · 7×24</div></div>
+        <div class="level-services"><span class="service-chip">Misión Crítica</span><span class="service-chip">SGDP · SGSI</span><span class="service-chip">Cumplimiento Normativo</span><span class="service-chip">Transformación Digital</span><span class="service-chip">IA y Automatización</span><span class="service-chip">Big Data y Analítica (BI)</span><span class="service-chip">Legal + Tech</span><span class="service-chip">Gestión de Proyectos</span></div>
+        <div class="level-demand"><strong>Modalidad</strong>Contrato por Proyectos<br />Asesoría especializada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="metrics">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric-card"><div class="metric-num">15<span class="metric-unit">min</span></div><div class="metric-label">SLA de respuesta para incidentes P1 críticos</div></div>
+      <div class="metric-card"><div class="metric-num">+70<span class="metric-unit">%</span></div><div class="metric-label">First Contact Resolution — resolución en primer contacto</div></div>
+      <div class="metric-card"><div class="metric-num">95<span class="metric-unit">%</span></div><div class="metric-label">SLA Compliance Rate — cumplimiento de tiempos pactados</div></div>
+      <div class="metric-card"><div class="metric-num">+85<span class="metric-unit">%</span></div><div class="metric-label">Customer Satisfaction Score (CSAT) objetivo</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="diff" id="diferenciadores">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">¿Por qué INNSYSTE SDM?</span>
+      <h2>Lo que nos diferencia del soporte TIC convencional</h2>
+      <p>No vendemos horas de soporte. Gestionamos el resultado de tu servicio de TI.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card"><div class="diff-num">01</div><h3>ITOps + SecOps + AIOps integrados</h3><p>La convergencia de operaciones, seguridad e inteligencia artificial en un solo modelo de servicio es única en el mercado LATAM. Sin silos, sin proveedores descoordinados.</p></div>
+      <div class="diff-card"><div class="diff-num">02</div><h3>SDM Móvil — respuesta presencial real</h3><p>El único modelo de la región que combina soporte remoto 7×24 con respuesta presencial inmediata. Cuando el problema no se resuelve por pantalla, llegamos al sitio.</p></div>
+      <div class="diff-card"><div class="diff-num">03</div><h3>Métricas y QBRs incluidos</h3><p>Cada cliente recibe un reporte mensual de KPIs y una revisión trimestral de negocio (QBR) donde presentamos resultados, tendencias y plan de mejora.</p></div>
+      <div class="diff-card"><div class="diff-num">04</div><h3>Alineado con ITIL 4 y COBIT</h3><p>Nuestro modelo sigue los marcos internacionales de mejores prácticas, lo que facilita auditorías, cumplimiento normativo y la madurez progresiva del servicio.</p></div>
+      <div class="diff-card"><div class="diff-num">05</div><h3>Escalable a toda LATAM</h3><p>Operamos en Colombia y Panamá/Centroamérica. El modelo está diseñado para escalar a cualquier país sin perder calidad ni coherencia en la entrega del servicio.</p></div>
+      <div class="diff-card"><div class="diff-num">06</div><h3>Un solo SDM, tu aliado estratégico</h3><p>Cada cliente tiene un Service Delivery Manager asignado — una persona que conoce tu operación, protege tu SLA y es el único interlocutor para escalar cualquier situación.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Cómo funciona</span>
+      <h2>De la contratación al servicio en marcha</h2>
+      <p>Un proceso de onboarding estructurado garantiza que desde el día 1 tu equipo sabe cómo usar el servicio y INNSYSTE conoce tu operación.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step"><div class="how-step-num">1</div><h3>Diagnóstico inicial</h3><p>Levantamiento de activos, estado actual del servicio y definición de SLAs personalizados según tu operación.</p></div>
+      <div class="how-step"><div class="how-step-num">2</div><h3>Configuración en Jira SM</h3><p>Activación del portal del cliente, flujos de escalamiento, categorías de incidentes y reglas de notificación automática.</p></div>
+      <div class="how-step"><div class="how-step-num">3</div><h3>Capacitación del equipo</h3><p>Entrenamos a tus usuarios en los canales de contacto, cómo escalar correctamente y qué esperar de cada nivel de servicio.</p></div>
+      <div class="how-step"><div class="how-step-num">4</div><h3>Operación y mejora continua</h3><p>Servicio activo con ciclo CSI mensual, reporte de KPIs y QBR trimestral para validar el valor entregado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="standards">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Marcos y estándares</span>
+      <h2>Respaldado por referentes internacionales</h2>
+      <p>INNSYSTE SDM opera bajo los marcos que exigen las organizaciones más rigurosas del mundo.</p>
+    </div>
+    <div class="standards-pills">
+      <div class="std-pill">ITIL 4</div><div class="std-pill">COBIT 2019</div><div class="std-pill">ISO/IEC 20000-1</div>
+      <div class="std-pill">ISO/IEC 27001:2022</div><div class="std-pill">ISO 22301</div><div class="std-pill">NIST CSF 2.0</div>
+      <div class="std-pill">SOC 2</div><div class="std-pill">PCI DSS v4.0</div><div class="std-pill">Ley 1581/2012</div>
+      <div class="std-pill">RNBD-SIC</div><div class="std-pill">HCE Ley 2015/2020</div>
+    </div>
+  </div>
+</section>
+
+<section class="models" id="modalidades">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">Modalidades comerciales</span>
+      <h2>Elige el modelo que se adapta a tu organización</h2>
+      <p>Diseñamos modalidades flexibles para que el servicio se ajuste a tu presupuesto, madurez tecnológica y nivel de exigencia.</p>
+    </div>
+    <div class="models-grid">
+      <div class="model-card">
+        <h3>Soporte bajo Demanda</h3>
+        <p class="desc">Para organizaciones que necesitan respaldo puntual sin compromiso de largo plazo. Cargo básico mensual + consumo real.</p>
+        <ul class="model-features"><li>Acceso al PUC y Help Desk</li><li>Facturación por evento/hora</li><li>Cargo básico de disponibilidad</li><li>Escalamiento a L2-3 disponible</li></ul>
+        <a href="https://outlook.office.com/book/ComercialINNSYSTE@innsyste.com/s/Wo3P_wGOIUyr8xiB90dKmg2?ismsaljsauthenabled" class="btn btn-outline" target="_blank">Conocer condiciones</a>
+      </div>
+      <div class="model-card featured">
+        <h3>Bolsa de Horas</h3>
+        <p class="desc">Prepago flexible con horas garantizadas. El modelo favorito de medianas empresas por su previsibilidad de costos.</p>
+        <ul class="model-features"><li>Bolsa de horas prepagada</li><li>Vigencia definida (trimestral/anual)</li><li>Acceso a todos los niveles SDM</li><li>Reporte de consumo en tiempo real</li><li>SDM asignado incluido</li></ul>
+        <a href="https://outlook.office.com/book/ComercialINNSYSTE@innsyste.com/s/Wo3P_wGOIUyr8xiB90dKmg2?ismsaljsauthenabled" class="btn btn-ghost-dark" target="_blank">Agendar reunión →</a>
+      </div>
+      <div class="model-card">
+        <h3>Contrato Anual</h3>
+        <p class="desc">La experiencia SDM completa. Servicio gestionado integral con SLAs, KPIs, QBRs y mejora continua estructurada.</p>
+        <ul class="model-features"><li>SLAs formales y medidos</li><li>KPIs mensuales + QBR trimestral</li><li>SDM Manager dedicado</li><li>Ciclo de mejora continua (CSI)</li><li>Integración con Jira SM del cliente</li></ul>
+        <a href="https://outlook.office.com/book/ComercialINNSYSTE@innsyste.com/s/Wo3P_wGOIUyr8xiB90dKmg2?ismsaljsauthenabled" class="btn btn-outline" target="_blank">Conocer condiciones</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contacto">
+  <div class="container cta-inner">
+    <span class="tag" style="background:rgba(255,69,117,.18);color:#ff8aaa;margin-bottom:20px;display:inline-block">Hablemos hoy</span>
+    <h2>¿Listo para tener el <em>mejor servicio TIC</em> de tu sector?</h2>
+    <p>Agenda una reunión con nuestro equipo. En 30 minutos te presentamos cómo INNSYSTE SDM transforma la operación TIC de tu organización.</p>
+    <div class="cta-actions">
+      <a href="https://outlook.office.com/book/ComercialINNSYSTE@innsyste.com/s/Wo3P_wGOIUyr8xiB90dKmg2?ismsaljsauthenabled" class="btn btn-primary" target="_blank">Agendar reunión gratuita →</a>
+      <a href="https://wa.me/573007191116?text=Hola%2C%20quiero%20conocer%20el%20servicio%20INNSYSTE%20SDM" class="btn btn-ghost-dark" target="_blank">WhatsApp directo</a>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-item"><span>📧</span><a href="mailto:mario@innsyste.com">mario@innsyste.com</a></div>
+      <div class="cta-contact-item"><span>📱</span><a href="https://wa.me/573007191116">+57 300 719 1116</a></div>
+      <div class="cta-contact-item"><span>🌐</span><a href="https://www.innsyste.com">www.innsyste.com</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <img src="/assets/logo-light.svg" alt="INNSYSTE" />
+    <ul class="footer-links">
+      <li><a href="https://www.innsyste.com">Inicio</a></li>
+      <li><a href="https://www.innsyste.com#servicios">Servicios</a></li>
+      <li><a href="https://www.innsyste.com#contacto">Contacto</a></li>
+    </ul>
+    <span class="footer-copy">© INNSYSTE. Todos los derechos reservados.</span>
+  </div>
+</footer>
+
+</body>
+</html>
