@@ -25,9 +25,9 @@ Push a `main` → GitHub Actions (`.github/workflows/azure-static-web-apps-*.yml
 ## Arquitectura
 
 - `index.html` — sitio principal one-page (hero, retos, valor, servicios, estándares, experiencia, contacto).
-- `inntime.html`, `innseal.html`, `kas-telenet.html` — landings de productos/aliados; comparten `styles.css` y `script.js` con el index.
-- `sdm/index.html` — sección independiente un nivel abajo.
-- `styles.css` — único stylesheet para todo el sitio. Todos los tokens de diseño (colores, tipografía, sombras, radios) viven como custom properties en `:root`; usar las variables, no hardcodear valores.
+- `inntime.html` — landing INNTime; comparte `styles.css` y `script.js` con el index (header/footer comunes), más CSS propio embebido con prefijo `it-*` y un carrusel inline.
+- `innseal.html`, `kas-telenet.html`, `sdm/index.html` — páginas **auto-contenidas** con su propio CSS embebido; NO cargan `styles.css` (sus clases chocan, p. ej. `.nav` en SDM). `kas-telenet.html` es una propuesta confidencial: tiene `noindex` y está excluida de sitemap/robots.
+- `styles.css` — stylesheet compartido (index + inntime). Todos los tokens de diseño (colores, tipografía, sombras, radios) viven como custom properties en `:root`; usar las variables, no hardcodear valores.
 - `script.js` — IIFE única: estado del header al hacer scroll, nav móvil, dropdowns, año del footer y scroll-reveal con IntersectionObserver. Asume que existen `#siteHeader`, `#navToggle` y `.nav`; una página que incluya `script.js` sin esos elementos lanzará errores.
 - `assets/` — `logo.svg` (navy, fondos claros) y `logo-light.svg` (fondos oscuros), favicons, imágenes.
 

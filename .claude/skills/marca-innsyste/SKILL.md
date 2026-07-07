@@ -38,7 +38,8 @@ estático (HTML + CSS + JS vanilla, sin frameworks ni build step) y está en esp
 - `rittal.html`, `kas-telenet.html`, `MonitorINN.html` — páginas de productos/aliados.
 - `sdm/` — sección independiente.
 - `assets/` — logos (`logo.svg` navy, `logo-light.svg` para fondos oscuros), favicon, fotos.
-- `styles.css` compartido por todas las páginas; `script.js` para interacción ligera.
+- `styles.css` y `script.js` compartidos por `index.html` e `inntime.html` (header/footer comunes);
+  `innseal.html`, `kas-telenet.html` y `sdm/index.html` son auto-contenidas con CSS propio embebido.
 
 ## Reglas de trabajo
 

@@ -1033,23 +1033,11 @@
     </div>
   </footer>
 
+  <script src="script.js" defer></script>
   <script>
     (function () {
       'use strict';
-      const header = document.getElementById('siteHeader');
-      document.addEventListener('scroll', () => { header.classList.toggle('is-scrolled', window.scrollY > 8); }, { passive: true });
-      const navToggle = document.getElementById('navToggle');
-      const nav = document.querySelector('.nav');
-      navToggle.addEventListener('click', () => {
-        const open = nav.classList.toggle('is-open');
-        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        navToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
-      });
-      nav.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { nav.classList.remove('is-open'); navToggle.setAttribute('aria-expanded', 'false'); }));
-      const yearEl = document.getElementById('year');
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-      /* ── Hero carousel ── */
+      /* ── Hero carousel (específico de INNTime; lo común vive en script.js) ── */
       const hcTrack = document.getElementById('hcTrack');
       const hcDots  = document.getElementById('hcDots');
       if (hcTrack) {

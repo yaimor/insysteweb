@@ -10,93 +10,75 @@ Sitio web institucional de **INNSYSTE**, basado en el portafolio de Soluciones T
 - **HTML5** semántico
 - **CSS3** moderno (Grid, Flexbox, custom properties, clamp())
 - **JavaScript** vanilla (sin dependencias)
-- **Google Fonts** — Inter + Space Grotesk
+- **Google Fonts** — Montserrat
 
-Sin build step, sin frameworks. Listo para desplegar en cualquier hosting estático.
+Sin build step, sin frameworks. Lo que está en el repo es lo que se sirve.
 
 ## Estructura
 
 ```
 insysteweb/
-├── index.html       # Estructura completa del sitio
-├── styles.css       # Diseño + responsive (4 breakpoints)
-├── script.js        # Menú móvil, scroll reveal, validación de form
-├── .gitignore
-└── README.md
+├── index.html                # Sitio principal (one-page)
+├── inntime.html              # Landing INNTime — bolsas de horas TI
+├── innseal.html              # Innseal — análisis competitivo (auto-contenida)
+├── kas-telenet.html          # Propuesta Kaspersky/TeleNet (confidencial, noindex)
+├── sdm/index.html            # Landing SDM — Service Delivery Management (auto-contenida)
+├── styles.css                # Stylesheet compartido (index + inntime): tokens, header, footer
+├── script.js                 # JS compartido: nav móvil, dropdowns, scroll reveal, año
+├── staticwebapp.config.json  # Routing de Azure (rutas limpias /inntime, /innseal, …)
+├── sitemap.xml · robots.txt
+└── assets/                   # Logos, favicon, imagen OG
 ```
 
-## Secciones
-
-1. **Hero** — propuesta de valor + stats (11+ años, 4 líneas, 360° IT/OT)
-2. **Retos** — 14 desafíos comunes + 3 insights (Gartner, OnePoll, FinOps)
-3. **Valor** — 4 pilares: Planear · Estabilizar · Optimizar · Anticipar
-4. **Servicios** — 4 líneas de negocio:
-   - Confidencialidad, Integridad & Disponibilidad (Ciberseguridad)
-   - Resiliencia Operativa & Continuidad
-   - Servicios Gestionados & Soporte
-   - Privacidad, Cumplimiento & Gobierno de datos
-5. **Estándares** — ISO 27001, SOC 2, NIST CSF, ITIL 4, COBIT, Ley 1581, etc.
-6. **Experiencia** — bloque oscuro destacando los 11 años
-7. **Contacto** — datos directos + formulario con validación
+`index.html` e `inntime.html` comparten `styles.css` + `script.js` (header y footer comunes).
+`innseal.html`, `kas-telenet.html` y `sdm/index.html` son páginas auto-contenidas con su propio CSS embebido.
 
 ## Desarrollo local
 
-Cualquier servidor estático sirve. Opciones rápidas:
+Cualquier servidor estático sirve:
 
 ```bash
-# Python
-python -m http.server 5173
-
-# Node (npx)
-npx serve .
-
-# VS Code
-# Extensión "Live Server" → click derecho en index.html
+python -m http.server 8080     # o: npx serve -l 8080 .
 ```
 
-Luego abre <http://localhost:5173>.
+Luego abre <http://localhost:8080>.
 
 ## Despliegue
 
-### GitHub Pages
+**Azure Static Web Apps** vía GitHub Actions: cada push a `main` publica automáticamente
+(workflow en `.github/workflows/`). Los pull requests generan un entorno de preview.
+No hay staging: verificar localmente antes de hacer push.
 
-1. *Settings → Pages*
-2. *Source*: `Deploy from a branch`
-3. *Branch*: `main` / `(root)`
-4. URL pública: `https://yaimor.github.io/insysteweb/`
-
-### Otros hosts
-
-- **Netlify** / **Vercel** / **Cloudflare Pages**: arrastra la carpeta o conecta el repo. No requiere configuración.
+Las rutas limpias (`/inntime`, `/innseal`, `/kas-telenet`) se definen en `staticwebapp.config.json`.
 
 ## Diseño
 
 | Token | Valor |
 |---|---|
-| Primario | `#1e40af` (azul corporativo) |
-| Acento | `#06b6d4` (cyan tecnológico) |
-| Fondo oscuro | `#0a0e27` (navy profundo) |
-| Tipografía cuerpo | Inter |
-| Tipografía display | Space Grotesk |
+| Navy (primario) | `#112e50` |
+| Rosa (acento) | `#ff4575` |
+| Fondo | `#ffffff` |
+| Tipografía | Montserrat |
+
+Todos los tokens viven como custom properties en `:root` de `styles.css`.
 
 ## Responsive
 
-Breakpoints definidos en `styles.css`:
-
-| Breakpoint | Comportamiento |
-|---|---|
-| `≤ 1100px` | Tablet landscape — padding ajustado |
-| `≤ 900px` | Tablet portrait — nav hamburguesa, grids 1 col |
-| `≤ 700px` | Móvil — botones full-width, formulario apilado |
-| `≤ 480px` | Móvil pequeño — tipografía y padding compactos |
+Breakpoints en `styles.css`: `≤1100px` (tablet landscape), `≤900px` (nav hamburguesa, grids 1 col),
+`≤700px` (móvil), `≤480px` (móvil pequeño).
 
 ## Accesibilidad
 
 - Skip-link al contenido principal
 - ARIA labels en navegación, botones y form
 - `prefers-reduced-motion` respetado
-- Touch targets mínimos de 44px en pantallas táctiles
 - Contraste AA en texto sobre todos los fondos
+
+## SEO
+
+- Open Graph + Twitter cards + canonical en todas las páginas públicas
+- JSON-LD (Organization) en el index
+- `sitemap.xml` + `robots.txt` (kas-telenet excluido: contenido confidencial con `noindex`)
 
 ## Contacto comercial
 
