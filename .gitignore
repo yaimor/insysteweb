@@ -19,5 +19,6 @@ node_modules/
 _innsyste.txt
 *.local
 
-# Claude Code local config
-.claude/
+# Claude Code local config (excepto skills del proyecto)
+.claude/*
+!.claude/skills/
